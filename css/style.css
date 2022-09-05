@@ -1,0 +1,193 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+    /* Reset */
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    /* Default styling */
+    /* Google fonts */
+    font-family: "Lato", sans-serif;
+    /* font weight is boldness of font */
+    font-weight: 400;
+    /* font-size: 60px; */
+    /* space between each line */
+    line-height: 1.7;
+    color: #777;
+    /* padding around container */
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    /* background image with linear gradient from left to bottom right/colors of gradient/image under gradient  */
+    background-image: linear-gradient(to right bottom,
+     rgba(126, 213, 111, 0.8), 
+     rgba(40, 180, 133, 0.8)),
+      url('../img/hero.jpg');
+      /* scales img to smallest possible size to fill container */
+    background-size: cover;
+    /* sets the initial position for each background image relative to value */
+    background-position: top;
+    /* clip path clips the image starting from top left clockwise with x going to the right and y going down */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* the absolute positioning of the child element is relative to the this container */
+    position: relative;
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    /* top goes to half of the relative parent container */
+    top: 40%;
+    /* left goes to half of the relative parent container */
+    left: 50%;
+    /* translates 50% NOT relative to the container but the element itself. So 50% of the container height and width*/
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+
+    /* hides shakiness of animations */
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+}
+.heading-primary-main {
+    /* occupies 100% of width */
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+     
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+        /* animation-delay: 3s;
+        animation-iteration-count: 2; */
+
+}
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    /* animation-name: moveInRight;
+    animation-duration: 800ms;
+    animation-timing-function: ease-out; */
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+    /* Specifiy what happens (recommended: opacity or transform) at each frame of the animation */
+    /* Use property animation-name/animation-duration/animation-delay/animation-count/animation-timing-function to apply keyframes */
+    /* At 0% of animation duration (START) */
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translate(10px);
+    }
+    /* At 100% of animation duration (FINISH)*/
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    /* Specifiy what happens (recommended: opacity or transform) at each frame of the animation */
+    /* Use property animation-name/animation-duration/animation-delay/animation-count/animation-timing-function to apply keyframes */
+    /* At 0% of animation duration (START) */
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translate(-10px);
+    }
+    /* At 100% of animation duration (FINISH)*/
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+/* link state is normal state of link element, visited is the state of the link after it's clicked on*/
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    /* inline-block maintains full width of height of container but inline */
+    display: inline-block;
+    border-radius: 100px;
+    /* simpler transtion method. all properties animated for .2s  */
+    transition: all .2s;
+    position: relative;
+}
+
+/* when you hover over a link*/
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+/* when you click on a link */
+.btn:active {
+    transform: translate(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+
+}
+
+/* The ::after selector inserts something after the content of each selected element(s). */
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* z-index defines the position of the elements if they're one on top of the other */
+    z-index: -1;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+    transform: scale(1.2);
+}
